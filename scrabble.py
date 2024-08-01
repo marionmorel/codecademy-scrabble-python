@@ -9,7 +9,7 @@ letter_to_points[" "] = 0
 
 def score_word(word): 
     point_total = 0
-    for character in word:
+    for character in word.upper():
         if character not in letter_to_points:
             point_total += 0
         else:
@@ -17,7 +17,9 @@ def score_word(word):
     return point_total
 
 brownie_points = score_word("BROWNIE")
+brownie_lower_points = score_word("brownie")
 print(brownie_points)
+print(brownie_lower_points)
 
 # Score a game
 
@@ -31,3 +33,12 @@ for player, words in player_to_words.items():
     player_to_points[player] = player_points
 
 print(player_to_points)
+
+# Add a word to the list of words a player played
+
+def play_word(player, word):
+    player_to_words[player].append(word)
+
+play_word("player1", "BOAT")
+print(player_to_words["player1"])
+
